@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="straw-resource" />
+        <module name="straw-portal" />
+        <module name="straw" />
+        <module name="straw-generator" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="straw" target="1.8" />
+      <module name="straw-generator" target="1.8" />
+      <module name="straw-portal" target="1.8" />
+      <module name="straw-resource" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="straw" options="-parameters" />
+      <module name="straw-generator" options="-parameters" />
+      <module name="straw-portal" options="-parameters" />
+      <module name="straw-resource" options="-parameters" />
+    </option>
+  </component>
+</project>

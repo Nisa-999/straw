@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.tedu.straw.portal.mapper.QuestionMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.tedu.straw.portal.model.Question">
+        <id column="id" property="id" />
+        <result column="title" property="title" />
+        <result column="content" property="content" />
+        <result column="user_nick_name" property="userNickName" />
+        <result column="user_id" property="userId" />
+        <result column="created_time" property="createdTime" />
+        <result column="status" property="status" />
+        <result column="hits" property="hits" />
+        <result column="is_public" property="isPublic" />
+        <result column="modified_time" property="modifiedTime" />
+        <result column="is_delete" property="isDelete" />
+        <result column="tag_ids" property="tagIds" />
+    </resultMap>
+
+    <resultMap id="QuestionVOMap" type="cn.tedu.straw.portal.vo.QuestionVO">
+        <id column="id" property="id" />
+        <result column="title" property="title" />
+        <result column="content" property="content" />
+        <result column="user_nick_name" property="userNickName" />
+        <result column="user_id" property="userId" />
+        <result column="created_time" property="createdTime" />
+        <result column="status" property="status" />
+        <result column="hits" property="hits" />
+        <result column="is_public" property="isPublic" />
+        <result column="modified_time" property="modifiedTime" />
+        <result column="is_delete" property="isDelete" />
+        <result column="tag_ids" property="tagIds" />
+    </resultMap>
+
+    <select id="findById" resultMap="QuestionVOMap">
+        SELECT
+            *
+        FROM
+            question
+        WHERE
+            id=#{id}
+    </select>
+
+    <select id="findMostHits"
+            resultType="cn.tedu.straw.portal.vo.QuestionListItemVO">
+        SELECT
+            id, title, status, hits
+        FROM
+            question
+        WHERE
+            is_public=1 AND is_delete=0
+        ORDER BY
+            hits DESC, id DESC
+        LIMIT
+            0, 10
+    </select>
+
+    <select id="findStudentQuestions" resultMap="QuestionVOMap">
+        SELECT
+            *
+        FROM
+            question
+        WHERE
+            user_id=#{userId}
+        ORDER BY
+            created_time DESC
+    </select>
+
+    <select id="findTeacherQuestions" resultMap="QuestionVOMap">
+        SELECT
+            question.*
+        FROM
+            question
+        LEFT JOIN
+            user_question
+        ON
+            question.id=user_question.question_id
+        WHERE
+            question.user_id=#{teacherId}
+            OR user_question.user_id=#{teacherId}
+            AND is_delete=0
+        ORDER BY
+            status, modified_time DESC
+    </select>
+
+</mapper>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/straw.iml" filepath="$PROJECT_DIR$/straw.iml" />
+      <module fileurl="file://$PROJECT_DIR$/straw-generator/straw-generator.iml" filepath="$PROJECT_DIR$/straw-generator/straw-generator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/straw-portal/straw-portal.iml" filepath="$PROJECT_DIR$/straw-portal/straw-portal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/straw-resource/straw-resource.iml" filepath="$PROJECT_DIR$/straw-resource/straw-resource.iml" />
+    </modules>
+  </component>
+</project>
